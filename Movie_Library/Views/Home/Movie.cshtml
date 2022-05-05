@@ -1,8 +1,61 @@
-@model System.Collections.Generic.List<Movie_Library.Models.MovieMod>
+@model IEnumerable<Movie_Library.Models.MovieMod>
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewData["Title"] = "Movies";
 }
 
-<h2>title</h2>
+<h2>Movies</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FilmTitle )
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genre )
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Studio )
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AudienceScore )
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year )
+        </th>
+        <th></th>
+    </tr>
+    
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilmTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Studio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AudienceScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { FilmTitle=item.FilmTitle}) |
+                @Html.ActionLink("Details", "Details", new { FilmTitle=item.FilmTitle}) |
+                @Html.ActionLink("Delete", "Delete", new { FilmTitle=item.FilmTitle})
+            </td>
+        </tr>
+    }
+</table>
+

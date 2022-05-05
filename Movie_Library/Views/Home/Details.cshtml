@@ -1,0 +1,51 @@
+@model Movie_Library.Models.MovieMod
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "_Layout";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MovieMod</h4>
+    <hr />
+    <dl class="">
+        <dt>
+            @Html.DisplayNameFor(model => model.FilmTitle )
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FilmTitle )
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre )
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Genre )
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Studio )
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Studio )
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AudienceScore )
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AudienceScore )
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Year )
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Year )
+        </dd>
+        
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { film = Model.FilmTitle})
+    @Html.ActionLink("Back to List", "Index")
+</p>
