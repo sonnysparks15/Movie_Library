@@ -37,7 +37,7 @@ public class HomeController : Controller
         List<MovieMod> movies = new List<MovieMod>();
         MovieDAO movieDAO = new MovieDAO();
 
-        movies = movieDAO.FetchAll();
+        movies = movieDAO.ReadIn();
         
         return View("Movie", movies);
     }
@@ -50,13 +50,20 @@ public class HomeController : Controller
     }
     
 /* /////////////////////////////// */
-    public IActionResult Create()
+    public IActionResult Create(MovieMod movieMod)
     {
-        throw new NotImplementedException();
+        return View("MovieModForm");
+    }
+    public IActionResult CreateProcess(MovieMod movieMod)
+    {
+        MovieDAO movieDao = new MovieDAO();
+        movieDao.Create(movieMod);
+        
+        return View("Details", movieMod);
     }
     
 /* /////////////////////////////// */
-    public IActionResult Edit(string filmtitle)
+    public IActionResult Edit()
     {
         throw new NotImplementedException();
     }
@@ -65,12 +72,12 @@ public class HomeController : Controller
     public IActionResult Details(string filmTitle)
     {
         MovieDAO movieDao = new MovieDAO();
-        MovieMod movieMod = movieDao.FetchDetails(filmTitle);
+        MovieMod movieMod = movieDao.Details(filmTitle);
         return View("Details", movieMod);
     }
     
 /* /////////////////////////////// */
-    public IActionResult Delete(string filmtitle)
+    public IActionResult Delete()
     {
         throw new NotImplementedException();
     }

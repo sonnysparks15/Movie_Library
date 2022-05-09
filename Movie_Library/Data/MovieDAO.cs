@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+// ReSharper disable All
 namespace Movie_Library.Data;
 /* //////////////////////////////////////////////////////////////////////// */
 
@@ -16,7 +17,7 @@ internal class MovieDAO
     
 /* ////////////////////////////////////////////////////////////////////// */
     // Preforms All Data retrieving functions 
-       public List<MovieMod> FetchAll()
+       public List<MovieMod> ReadIn()
        {
            List<MovieMod> returnList = new List<MovieMod>();
            
@@ -50,36 +51,32 @@ internal class MovieDAO
            return returnList;
        }
 /* //////////////////////////////////////////////////////////////////////// */
-/*
-    public int MovieDAO Create(MovieMod movie)
+
+    public void Create(MovieMod movieMod)
     {
-        List<MovieMod> returnList = new List<MovieMod>();
-           
         // Access Database
         using (SqlConnection connection = new SqlConnection(connectionString))
         {
-            string sqlQuery = "INSERT INTO MovieDataBase.dbo.movies Values(@FilmTitle, @Genre, @Studio, " +
-                              "@AudienceScore, @Year)";
+            string sqlQuery = "INSERT INTO MovieDataBase.dbo.movies(Film,Genre,Lead_Studio,Audience_score,Profitability,Rotten_Tomatoes,Worldwide_Gross,Year) " +
+                              "Values(@FilmTitle, @Genre, @Studio, @AudienceScore, '', '', '', @Year)";
 
             SqlCommand command = new SqlCommand(sqlQuery, connection);
 
-            command.Parameters.Add("@FilmTitle", System.Data.SqlDbType.VarChar, 1000).Value = movie.FilmTitle;
-            command.Parameters.Add("@Genre", System.Data.SqlDbType.VarChar, 1000).Value = movie.Genre;
-            command.Parameters.Add("@Studio", System.Data.SqlDbType.VarChar, 1000).Value = movie.Studio;
-            // ReSharper disable once HeapView.BoxingAllocation
-            command.Parameters.Add("@AudienceScore", System.Data.SqlDbType.Int, 1000).Value = movie.AudienceScore;
-            // ReSharper disable once HeapView.BoxingAllocation
-            command.Parameters.Add("@Year", System.Data.SqlDbType.Int, 1000).Value = movie.Year;
-
+            command.Parameters.Add("@FilmTitle", System.Data.SqlDbType.VarChar, 100).Value = movieMod.FilmTitle;
+            command.Parameters.Add("@Genre", System.Data.SqlDbType.VarChar, 100).Value = movieMod.Genre;
+            command.Parameters.Add("@Studio", System.Data.SqlDbType.VarChar, 100).Value = movieMod.Studio;
+            command.Parameters.Add("@AudienceScore", System.Data.SqlDbType.TinyInt, 100).Value = movieMod.AudienceScore;
+            command.Parameters.Add("@Year", System.Data.SqlDbType.SmallInt, 100).Value = movieMod.Year;
+            
             connection.Open();
             command.ExecuteNonQuery();
 
-            return ;
+            return;
         }
     }
-    */
 /* //////////////////////////////////////////////////////////////////////// */
-    public MovieMod FetchDetails(string Film)
+
+    public MovieMod Details(string Film)
     {
 
         // Access Database
