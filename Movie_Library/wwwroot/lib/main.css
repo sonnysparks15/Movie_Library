@@ -1,0 +1,25 @@
+/* Custom CSS File */
+/* Sonny Sparks */
+
+body {
+    padding: 0;
+    margin: 0;
+    background: #2c3034;
+}
+.navbar {
+    background:#6c757d;
+}
+.nav-link,
+.navbar-brand {
+    color: #fff;
+    cursor: pointer;
+}
+.nav-link {
+    margin-right: 1em !important;
+}
+.nav-link:hover {
+    color: #000;
+}
+.navbar-collapse {
+    justify-content: flex-end;
+}

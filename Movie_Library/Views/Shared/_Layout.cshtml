@@ -1,5 +1,9 @@
-﻿<!DOCTYPE html>
+﻿<!-- CSHTML Master Layout Page -->
+<!-- Sonny Sparks -->
+
+<!DOCTYPE html>
 <html lang="en">
+<!--------------------------------------------------------->
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -7,8 +11,11 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/Movie_Library.styles.css" asp-append-version="true"/>
+    <link rel="~/lib/main.cs"/>
 </head>
-<body style= "background-color: #c7dbd2">
+<!--------------------Body Begin------------------------------------->
+<body style="background-color: #dfe0e1">
+<!--------Header Begin------------>
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-grey border-bottom box-shadow mb-3">
         <div class="container-fluid">
@@ -27,20 +34,28 @@
         </div>
     </nav>
 </header>
+<!---------Header End----------->
+<!---------Container Begin----------->
 <div class="container">
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
 </div>
-
+<!---------Container End----------->
+<!---------Footer Begin----------->
 <footer class="border-top footer text-muted">
     <div class="container">
         &copy; 2022 - Movie_Library - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </div>
 </footer>
+<!----------Footer End---------->
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/main.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)
+
 </body>
+<!-------------------Body End-------------------------------------->
+
 </html>

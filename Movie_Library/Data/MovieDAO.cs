@@ -111,4 +111,26 @@ internal class MovieDAO
         }
         
     }
+    /* //////////////////////////////////////////////////////////////////////// */
+
+    public void Delete(string filmTitle)
+    {
+        // Access Database
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            string sqlQuery = "DELETE FROM MovieDataBase.dbo.movies WHERE Film = @FilmTitle";
+
+            SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+            command.Parameters.Add("@FilmTitle", System.Data.SqlDbType.VarChar, 100).Value = filmTitle;
+
+            connection.Open();
+            command.ExecuteNonQuery();
+
+            return;
+        }
+    }
+    
+    /* //////////////////////////////////////////////////////////////////////// */
+
 }

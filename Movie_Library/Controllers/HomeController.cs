@@ -61,13 +61,7 @@ public class HomeController : Controller
         
         return View("Details", movieMod);
     }
-    
-/* /////////////////////////////// */
-    public IActionResult Edit()
-    {
-        throw new NotImplementedException();
-    }
-    
+
 /* /////////////////////////////// */
     public IActionResult Details(string filmTitle)
     {
@@ -77,9 +71,14 @@ public class HomeController : Controller
     }
     
 /* /////////////////////////////// */
-    public IActionResult Delete()
+    public IActionResult Delete(string filmTitle)
     {
-        throw new NotImplementedException();
+        MovieDAO movieDAO = new MovieDAO();
+        movieDAO.Delete(filmTitle);
+        
+        List<MovieMod> movies = movieDAO.ReadIn();
+
+        return View("Movie", movies);
     }
 /* /////////////////////////////// */
 }
