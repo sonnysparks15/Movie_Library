@@ -2,9 +2,10 @@
 
 @{
     ViewData["Title"] = "Movies";
+    Layout = "_LLayout";
 }
 
-<h2>Movies</h2>
+<h2 class="text-white-50 text-decoration-underline">Movies</h2>
 
 
 <p>
@@ -12,7 +13,7 @@
 </p>
 
 
-<table class="table">
+<table class="table text-white-50">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.FilmTitle )
